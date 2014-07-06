@@ -15,9 +15,6 @@ class Installer
         $splFile = new \SplFileInfo($skeletonRoot);
         $folderName = $splFile->getFilename();
         list($vendorName, $packageName) = explode('.', $folderName);
-        $jobChmod = function (\SplFileInfo $file) {
-            chmod($file, 0777);
-        };
         $jobRename = function (\SplFileInfo $file) use ($vendorName, $packageName) {
             $fineName = $file->getFilename();
             if ($file->isDir() || strpos($fineName, '.') === 0 || ! is_writable($file)) {

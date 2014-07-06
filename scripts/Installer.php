@@ -44,6 +44,8 @@ class Installer
         unlink("{$skeletonRoot}/composer.json");
         rename("{$skeletonRoot}/src/composer.json", "{$skeletonRoot}/composer.json");
 
+        self::dumpAutoload($event);
+
         // delete self
         unlink(__FILE__);
     }
@@ -60,5 +62,21 @@ class Installer
         foreach($iterator as $file) {
             $job($file);
         }
+    }
+
+    /**
+     * @param Event $event
+     * @return void
+     */
+    private static function dumpAutoload(Event $event)
+    {
+        $composer = $event->getComposer();
+        $config = $composer->getConfig();
+        $repo = $composer->getRepositoryManager()->getLocalRepository();
+        $package = $composer->getPackage();
+        $installer = $composer->getInstallationManager();
+
+        $generator = $composer->getAutoloadGenerator();
+        $generator->dump($config, $repo, $package, $installer, 'composer');
     }
 }

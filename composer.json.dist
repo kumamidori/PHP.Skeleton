@@ -14,8 +14,7 @@
     },
     "autoload-dev":{
         "psr-4":{
-            "Php\\Skeleton\\": "tests/",
-            "Php\\Skeleton\\": "tests/Fake"
+            "Php\\Skeleton\\": ["tests/", "tests/Fake"]
         }
     },
     "minimum-stability": "dev",

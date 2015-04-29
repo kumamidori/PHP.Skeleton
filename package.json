@@ -1,0 +1,11 @@
+{
+    "package": {
+        "name": "php/skeleton",
+        "version": "1.0.0",
+        "source": {
+            "url": "https://github.com/kumamidori/PHP.Skeleton.git",
+            "type": "git",
+            "reference": "feature/fix_composer_json_skeleton"
+        }
+    }
+}
